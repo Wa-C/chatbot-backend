@@ -1,10 +1,20 @@
 const express = require('express');
 const app = express();
-
 const http = require('http');
 const cors = require('cors');
 app.use(cors());
 const server = http.createServer(app);
+// ---- communication code------------------------
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+
+
 
 const { Server } = require('socket.io');
 // server connect
